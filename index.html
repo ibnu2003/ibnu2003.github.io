@@ -55,8 +55,29 @@ footer{text-align:center;padding:28px;border-top:1px solid #27304a;color:#8f9ab0
 </div>
 <form onsubmit="kirim(event)"><input class="input" id="nama" placeholder="Nama Anda" required><input class="input" id="email" type="email" placeholder="Email Anda" required><select class="input" id="layanan"><option>Pertumbuhan Sosial Media</option><option>Dukungan Konten</option><option>Dukungan Engagement</option><option>Pesanan Custom</option></select><textarea class="input" id="pesan" placeholder="Ceritakan kebutuhan Anda..." required></textarea><button class="btn" style="border:0" type="submit">Kirim Pesan</button></form></div></section>
 <footer>© 2026 SocialBoost — Jasa Social Media<br><small>WhatsApp: 0895 4108 50100</small></footer>
+
 <script>
-function kirim(e){e.preventDefault();let n=document.getElementById('nama').value,s=document.getElementById('layanan').value,p=document.getElementById('pesan').value;let sub=encodeURIComponent('Pesanan SocialBoost dari '+n);let body=encodeURIComponent('Nama: '+n+'\\nLayanan: '+s+'\\n\\nKebutuhan:\\n'+p);location.href='mailto:EMAIL-KAMU@example.com?subject='+sub+'&body='+body}
+function kirim(e){
+  e.preventDefault();
+
+  let nama = document.getElementById("nama").value;
+  let email = document.getElementById("email").value;
+  let layanan = document.getElementById("layanan").value;
+  let kebutuhan = document.getElementById("kebutuhan").value;
+
+  let pesan =
+    "Halo SocialBoost, saya ingin memesan jasa.%0A%0A" +
+    "Nama: " + encodeURIComponent(nama) + "%0A" +
+    "Email: " + encodeURIComponent(email) + "%0A" +
+    "Layanan: " + encodeURIComponent(layanan) + "%0A" +
+    "Kebutuhan: " + encodeURIComponent(kebutuhan);
+
+  window.open(
+    "https://wa.me/62895410850100?text=" + pesan,
+    "_blank"
+  );
+}
 </script>
+
 </body>
 </html>
