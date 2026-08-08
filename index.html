@@ -127,7 +127,7 @@ function kirim(e){
   );
 }
   function hitungHarga() {
-  const layanan = document.getElementById("layanan");
+  const layanan = document.getElementById("pilihanLayanan");
   const jumlah = Number(document.getElementById("jumlah").value);
   const pilihan = layanan.options[layanan.selectedIndex];
 
@@ -142,10 +142,10 @@ function kirim(e){
 
   document.getElementById("total").value =
     "Rp" + total.toLocaleString("id-ID");
-}
+      }
 
 function pesanWhatsApp() {
-  const layanan = document.getElementById("layanan").value;
+  const layanan = document.getElementById("pilihanLayanan").value;
   const jumlah = document.getElementById("jumlah").value;
   const total = document.getElementById("total").value;
 
