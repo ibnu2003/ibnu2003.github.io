@@ -39,65 +39,9 @@ footer{text-align:center;padding:28px;border-top:1px solid #27304a;color:#8f9ab0
 <div class="card"><div class="icon">💬</div><h3>Dukungan Engagement</h3><p>Bantuan menjaga aktivitas dan interaksi akun secara konsisten.</p></div>
 </div></div></section> 
 <section id="harga">
-  <div class="wrap">
-    <div class="title">
-      <h2>Paket Harga</h2>
-      <p>Pilih paket sesuai kebutuhan media sosial Anda.</p>
-    </div>
 
-    <div class="grid">
 
-      <div class="card">
-        <h3>Starter</h3>
-        <div class="price">$10</div>
-        <ul>
-          <li>1 platform media sosial</li>
-          <li>1 layanan pilihan</li>
-          <li>Proses cepat</li>
-          <li>Dukungan melalui WhatsApp</li>
-        </ul>
-        <a class="btn" href="#kontak">Pesan Sekarang</a>
-      </div>
-
-      <div class="card feature">
-        <h3>Business ⭐</h3>
-        <div class="price">$25</div>
-        <ul>
-          <li>Hingga 3 platform media sosial</li>
-          <li>3 layanan pilihan</li>
-          <li>Prioritas pengerjaan</li>
-          <li>Konsultasi gratis</li>
-        </ul>
-        <a class="btn" href="#kontak">Pesan Sekarang</a>
-      </div>
-
-      <div class="card">
-        <h3>Professional</h3>
-        <div class="price">$50</div>
-        <ul>
-          <li>Hingga 5 platform media sosial</li>
-          <li>Semua layanan tersedia</li>
-          <li>Prioritas utama</li>
-          <li>Dukungan langsung</li>
-        </ul>
-        <a class="btn" href="#kontak">Pesan Sekarang</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-<section id="pesanan" style="padding:50px 20px;">
-  <div class="wrap">
-    <div class="title">
-      <h2>🛒 Buat Pesanan</h2>
-      <p>Pilih layanan dan jumlah yang Anda inginkan.</p>
-    </div>
-
-    <div style="max-width:500px;margin:auto;">
-
-      <label><b>Pilih Layanan</b></label>
-
-      <select id="layanan" onchange="hitungHarga()"
+      <select id="pilihanLayanan" onchange="hitungHarga()">
         style="width:100%;padding:14px;margin:10px 0 20px;border-radius:8px;">
 
         <option value="">-- Pilih layanan --</option>
@@ -167,7 +111,7 @@ function kirim(e){
 
   let nama = document.getElementById("nama").value;
   let email = document.getElementById("email").value;
-  let layanan = document.getElementById("layanan").value;
+  let layanan = document.getElementById("pilihanLayanan")
   let kebutuhan = document.getElementById("kebutuhan").value;
 
   let pesan =
