@@ -86,7 +86,71 @@ footer{text-align:center;padding:28px;border-top:1px solid #27304a;color:#8f9ab0
     </div>
   </div>
 </section>
+<section id="pesanan" style="padding:50px 20px;">
+  <div class="wrap">
+    <div class="title">
+      <h2>🛒 Buat Pesanan</h2>
+      <p>Pilih layanan dan jumlah yang Anda inginkan.</p>
+    </div>
 
+    <div style="max-width:500px;margin:auto;">
+
+      <label><b>Pilih Layanan</b></label>
+
+      <select id="layanan" onchange="hitungHarga()"
+        style="width:100%;padding:14px;margin:10px 0 20px;border-radius:8px;">
+
+        <option value="">-- Pilih layanan --</option>
+
+        <option value="TikTok Followers" data-harga="30000" data-satuan="100">
+          TikTok Followers — Rp30.000 / 100
+        </option>
+
+        <option value="TikTok Likes" data-harga="25000" data-satuan="350">
+          TikTok Likes — Rp25.000 / 350
+        </option>
+
+        <option value="TikTok Views" data-harga="12000" data-satuan="1000">
+          TikTok Views — Rp12.000 / 1.000
+        </option>
+
+        <option value="Instagram Followers" data-harga="22000" data-satuan="100">
+          Instagram Followers — Rp22.000 / 100
+        </option>
+
+        <option value="Instagram Likes" data-harga="22000" data-satuan="350">
+          Instagram Likes — Rp22.000 / 350
+        </option>
+
+        <option value="Instagram Views" data-harga="12000" data-satuan="1000">
+          Instagram Views — Rp12.000 / 1.000
+        </option>
+
+      </select>
+
+      <label><b>Jumlah</b></label>
+
+      <input type="number" id="jumlah"
+        min="100"
+        placeholder="Contoh: 1000"
+        oninput="hitungHarga()"
+        style="width:100%;padding:14px;margin:10px 0 20px;border-radius:8px;box-sizing:border-box;">
+
+      <label><b>Total Harga</b></label>
+
+      <input type="text" id="total"
+        value="Rp0"
+        readonly
+        style="width:100%;padding:14px;margin:10px 0 20px;border-radius:8px;box-sizing:border-box;font-weight:bold;">
+
+      <button onclick="pesanWhatsApp()"
+        style="width:100%;padding:15px;border:0;border-radius:8px;background:#25D366;color:white;font-size:17px;font-weight:bold;">
+        📲 Pesan via WhatsApp
+      </button>
+
+    </div>
+  </div>
+</section>
 <section id="tentang"><div class="wrap about"><div><div class="title" style="text-align:left"><h2>Tentang Kami</h2></div><p>SocialBoost adalah layanan sederhana untuk membantu kreator dan bisnis membangun kehadiran di media sosial.</p><p>Kami menerima klien dari Indonesia maupun luar negeri. Hubungi kami untuk menjelaskan kebutuhan Anda.</p><a class="btn" href="#kontak">Hubungi Kami</a></div><div class="box"><h3>Kenapa memilih kami?</h3><p>✓ Harga terjangkau</p><p>✓ Komunikasi jelas</p><p>✓ Klien internasional diterima</p><p>✓ Bisa mulai dari paket kecil</p></div></div></section>
 
 <section id="kontak"><div class="wrap"><div class="title"><h2>Hubungi Kami</h2><p>Isi formulir. Setelah menekan kirim, aplikasi email akan terbuka.</p></div>
@@ -112,6 +176,50 @@ function kirim(e){
     "Email: " + encodeURIComponent(email) + "%0A" +
     "Layanan: " + encodeURIComponent(layanan) + "%0A" +
     "Kebutuhan: " + encodeURIComponent(kebutuhan);
+
+  window.open(
+    "https://wa.me/62895410850100?text=" + pesan,
+    "_blank"
+  );
+}
+  function hitungHarga() {
+  const layanan = document.getElementById("layanan");
+  const jumlah = Number(document.getElementById("jumlah").value);
+  const pilihan = layanan.options[layanan.selectedIndex];
+
+  if (!pilihan || !pilihan.dataset.harga || jumlah <= 0) {
+    document.getElementById("total").value = "Rp0";
+    return;
+  }
+
+  const harga = Number(pilihan.dataset.harga);
+  const satuan = Number(pilihan.dataset.satuan);
+  const total = Math.ceil(jumlah / satuan) * harga;
+
+  document.getElementById("total").value =
+    "Rp" + total.toLocaleString("id-ID");
+}
+
+function pesanWhatsApp() {
+  const layanan = document.getElementById("layanan").value;
+  const jumlah = document.getElementById("jumlah").value;
+  const total = document.getElementById("total").value;
+
+  if (!layanan) {
+    alert("Silakan pilih layanan.");
+    return;
+  }
+
+  if (!jumlah || Number(jumlah) < 100) {
+    alert("Masukkan jumlah minimal 100.");
+    return;
+  }
+
+  const pesan =
+    "Halo SocialBoost, saya ingin membuat pesanan.%0A%0A" +
+    "Layanan: " + encodeURIComponent(layanan) + "%0A" +
+    "Jumlah: " + encodeURIComponent(jumlah) + "%0A" +
+    "Total: " + encodeURIComponent(total);
 
   window.open(
     "https://wa.me/62895410850100?text=" + pesan,
