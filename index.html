@@ -794,57 +794,23 @@ function formatRupiah(angka){
 
 }
 
+function hitungHarga() {
+  const layanan = document.getElementById("pilihanLayanan");
+  const jumlah = Number(document.getElementById("jumlah").value);
+  const pilihan = layanan.options[layanan.selectedIndex];
 
-function hitungHarga(){
-
-  const layanan =
-    document.getElementById("pilihanLayanan");
-
-  const jumlah =
-    Number(document.getElementById("jumlah").value);
-
-  const pilihan =
-    layanan.options[layanan.selectedIndex];
-
-  const totalInput =
-    document.getElementById("total");
-
-  const pembayaran =
-    document.getElementById("totalPembayaran");
-
-
-  if(
-    !pilihan ||
-    !pilihan.dataset.harga ||
-    jumlah <= 0
-  ){
-
-    totalInput.value = "Rp0";
-    pembayaran.value = "Rp0";
-
+  if (!pilihan || !pilihan.dataset.harga || jumlah <= 0) {
+    document.getElementById("total").value = "Rp0";
     return;
   }
 
+  const harga = Number(pilihan.dataset.harga);
+  const satuan = Number(pilihan.dataset.satuan);
 
-  const harga =
-    Number(pilihan.dataset.harga);
+  const total = (jumlah / satuan) * harga;
 
-  const satuan =
-    Number(pilihan.dataset.satuan);
-
-
-  const total =
-    Math.ceil(jumlah / satuan) * harga;
-
-
-  const hasil =
-    formatRupiah(total);
-
-
-  totalInput.value = hasil;
-
-  pembayaran.value = hasil;
-
+  document.getElementById("total").value =
+    "Rp" + Math.round(total).toLocaleString("id-ID");
 }
 
 
