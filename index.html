@@ -3,249 +3,383 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SocialBoost Indonesia</title>
+<meta name="description" content="SocialBoost - Social Media Services">
+<title>SocialBoost — Social Media Services</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
 
 body{
   margin:0;
-  font-family:Arial,sans-serif;
-  background:#0b1020;
+  font-family:Arial,Helvetica,sans-serif;
   color:#fff;
-  line-height:1.6
+  background:
+    radial-gradient(circle at 15% 10%,rgba(124,92,255,.22),transparent 30%),
+    radial-gradient(circle at 85% 20%,rgba(0,210,255,.12),transparent 28%),
+    #070b17;
+  line-height:1.6;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+  background-size:40px 40px;
+  mask-image:linear-gradient(to bottom,black,transparent);
 }
 
 .wrap{
   width:92%;
-  max-width:1050px;
-  margin:auto
+  max-width:1100px;
+  margin:auto;
 }
 
 nav{
-  padding:18px 0;
-  border-bottom:1px solid #27304a;
   position:sticky;
   top:0;
-  background:#0b1020ee;
-  z-index:2
+  z-index:100;
+  padding:15px 0;
+  background:rgba(7,11,23,.82);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .nav{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:15px
+  gap:15px;
 }
 
 .logo{
-  font-size:23px;
-  font-weight:bold
+  font-size:24px;
+  font-weight:800;
+  letter-spacing:-.5px;
 }
 
 .logo b{
-  color:#8b6cff
+  color:#9b7cff;
 }
 
-nav a{
-  color:#c5ccdc;
+.links{
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+
+.links a{
+  color:#b9c1d4;
   text-decoration:none;
-  margin-left:14px;
-  font-size:14px
+  margin-left:16px;
+  font-size:14px;
 }
 
-.lang-btn{
-  border:1px solid #35405d;
-  background:#121a2e;
+.links a:hover{
   color:#fff;
-  padding:7px 10px;
-  border-radius:7px;
-  cursor:pointer;
-  margin-left:5px
 }
 
-.lang-btn.active{
-  background:#8064ff;
-  border-color:#8064ff
+.lang{
+  border:1px solid #343e5c;
+  background:#11182a;
+  color:#fff;
+  border-radius:9px;
+  padding:8px 10px;
+  cursor:pointer;
 }
 
 .hero{
+  position:relative;
   text-align:center;
-  padding:85px 0;
-  background:radial-gradient(circle at 50% 0,#282053,transparent 55%)
+  padding:105px 0 90px;
+  overflow:hidden;
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+  width:420px;
+  height:420px;
+  background:#7655ff;
+  filter:blur(130px);
+  opacity:.14;
+  top:-180px;
+  left:50%;
+  transform:translateX(-50%);
 }
 
 .badge{
+  position:relative;
   display:inline-block;
-  padding:7px 13px;
-  border:1px solid #514783;
+  padding:8px 15px;
+  border:1px solid #443a70;
   border-radius:30px;
-  color:#d7d0ff;
-  font-size:13px
+  color:#d9d2ff;
+  background:rgba(128,100,255,.08);
+  font-size:13px;
 }
 
-h1{
-  font-size:clamp(40px,8vw,70px);
-  line-height:1.05;
-  margin:18px auto;
-  max-width:850px
+.hero h1{
+  position:relative;
+  font-size:clamp(42px,8vw,76px);
+  line-height:1.02;
+  letter-spacing:-2px;
+  margin:22px auto;
+  max-width:900px;
 }
 
-h1 span{
-  color:#967fff
+.gradient{
+  background:linear-gradient(90deg,#9b7cff,#5ddcff);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
 }
 
 .hero p{
-  color:#b5bfd3;
-  max-width:650px;
+  position:relative;
+  color:#aeb8cd;
+  max-width:700px;
   margin:20px auto;
-  font-size:18px
+  font-size:18px;
 }
 
 .btn{
   display:inline-block;
-  background:#8064ff;
-  color:white;
-  padding:13px 21px;
-  border-radius:10px;
+  border:0;
+  background:linear-gradient(135deg,#8064ff,#5e8cff);
+  color:#fff;
+  padding:14px 22px;
+  border-radius:11px;
   text-decoration:none;
   font-weight:bold;
-  margin:6px
+  margin:6px;
+  cursor:pointer;
+  box-shadow:0 10px 30px rgba(103,82,255,.22);
+}
+
+.btn:hover{
+  transform:translateY(-1px);
 }
 
 .btn2{
-  background:transparent;
-  border:1px solid #35405d
+  background:rgba(255,255,255,.03);
+  border:1px solid #35405d;
+  box-shadow:none;
 }
 
 section{
-  padding:65px 0
+  padding:80px 0;
 }
 
 .title{
   text-align:center;
-  margin-bottom:35px
+  margin-bottom:38px;
 }
 
 .title h2{
   font-size:34px;
-  margin:0
+  margin:0 0 8px;
 }
 
 .title p{
-  color:#aeb8cd
+  color:#9faac0;
+  margin:0;
 }
 
 .grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:18px
+  gap:18px;
 }
 
 .card{
-  background:#121a2e;
+  background:linear-gradient(145deg,rgba(20,29,50,.96),rgba(12,18,32,.96));
   border:1px solid #29334d;
-  border-radius:16px;
-  padding:25px
+  border-radius:18px;
+  padding:27px;
+  box-shadow:0 20px 50px rgba(0,0,0,.15);
+}
+
+.card:hover{
+  border-color:#6654b7;
 }
 
 .card h3{
-  margin:8px 0
+  margin:10px 0 7px;
 }
 
-.card p,
-.card li{
-  color:#aeb8cd
+.card p{
+  color:#aeb8cd;
+  margin:0;
 }
 
 .icon{
-  font-size:30px
+  font-size:31px;
 }
 
-.price{
-  font-size:34px;
-  font-weight:bold
+.price-box{
+  max-width:680px;
+  margin:auto;
+  background:linear-gradient(145deg,#111a2e,#0d1424);
+  border:1px solid #303b58;
+  border-radius:22px;
+  padding:30px;
+  box-shadow:0 25px 70px rgba(0,0,0,.22);
 }
 
-.card ul{
-  padding-left:20px
+label{
+  display:block;
+  margin:15px 0 7px;
+  font-weight:bold;
 }
 
-.feature{
-  border-color:#8064ff
+select,
+input{
+  width:100%;
+  padding:15px;
+  margin:0;
+  background:#0a1120;
+  color:#fff;
+  border:1px solid #303b56;
+  border-radius:10px;
+  font-size:15px;
+  outline:none;
+}
+
+select:focus,
+input:focus{
+  border-color:#8064ff;
+}
+
+.total{
+  font-size:25px;
+  font-weight:bold;
+  text-align:center;
+  color:#a997ff;
+}
+
+.small-note{
+  color:#8793aa;
+  font-size:13px;
+  margin-top:8px;
+}
+
+.payment-card{
+  max-width:620px;
+  margin:auto;
+  text-align:center;
+}
+
+.qris{
+  width:100%;
+  max-width:220px;
+  display:block;
+  margin:20px auto;
+  border-radius:14px;
+  background:#fff;
+  padding:5px;
+  box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+.payment-item{
+  padding:20px 0;
+  border-bottom:1px solid #29334d;
+}
+
+.payment-item:last-child{
+  border-bottom:0;
+}
+
+.payment-number{
+  font-size:20px;
+  font-weight:bold;
+  color:#fff;
+  letter-spacing:.5px;
 }
 
 .about{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:30px
-}
-
-.about p{
-  color:#aeb8cd
+  gap:22px;
 }
 
 .box{
-  background:#121a2e;
+  background:#111a2d;
   border:1px solid #29334d;
   padding:28px;
-  border-radius:16px
+  border-radius:18px;
 }
 
-.input,
-select{
-  width:100%;
-  padding:14px;
-  margin:7px 0 20px;
-  background:#10172a;
-  border:1px solid #303b56;
-  border-radius:9px;
-  color:white;
-  font-size:15px
+.box p{
+  color:#aeb8cd;
 }
 
-.payment-card{
-  max-width:600px;
-  margin:auto;
-  text-align:center
-}
-
-.total-box{
-  width:100%;
-  padding:15px;
-  margin:10px 0 25px;
-  border-radius:8px;
-  border:1px solid #303b56;
-  background:#10172a;
-  color:white;
-  font-size:22px;
-  font-weight:bold;
-  text-align:center
-}
-
-.qris{
-  width:150px;
-  max-width:100%;
-  display:block;
-  margin:20px auto;
-  border-radius:12px
+.contact{
+  text-align:center;
 }
 
 footer{
   text-align:center;
-  padding:28px;
+  padding:35px 15px;
   border-top:1px solid #27304a;
-  color:#8f9ab0
+  color:#7f8aa2;
+}
+
+.hidden{
+  display:none;
 }
 
 @media(max-width:700px){
-  .grid,
-  .about{
-    grid-template-columns:1fr
+
+  .links a{
+    display:none;
   }
 
-  nav .links{
-    display:none
+  .nav{
+    justify-content:space-between;
+  }
+
+  .hero{
+    padding:75px 0 65px;
+  }
+
+  .hero h1{
+    font-size:44px;
+    letter-spacing:-1px;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  section{
+    padding:60px 0;
+  }
+
+  .grid,
+  .about{
+    grid-template-columns:1fr;
+  }
+
+  .price-box{
+    padding:20px;
+  }
+
+  .title h2{
+    font-size:29px;
+  }
+
+  .btn{
+    width:calc(100% - 12px);
   }
 }
 </style>
@@ -264,79 +398,56 @@ footer{
     <div class="links">
       <a href="#layanan" data-id="Layanan" data-en="Services">Layanan</a>
       <a href="#harga" data-id="Harga" data-en="Pricing">Harga</a>
+      <a href="#pembayaran" data-id="Pembayaran" data-en="Payment">Pembayaran</a>
       <a href="#tentang" data-id="Tentang" data-en="About">Tentang</a>
       <a href="#kontak" data-id="Kontak" data-en="Contact">Kontak</a>
 
-      <button class="lang-btn active" onclick="setLanguage('id')">
-        🇮🇩 ID
-      </button>
-
-      <button class="lang-btn" onclick="setLanguage('en')">
-        🇺🇸 EN
-      </button>
+      <button class="lang" onclick="ubahBahasa()">🇬🇧 EN</button>
     </div>
 
   </div>
 </nav>
 
 
-<!-- HOME -->
+<!-- HERO -->
 <header class="hero">
+
   <div class="wrap">
 
-    <div class="badge"
-      data-id="🚀 Jasa Social Media"
-      data-en="🚀 Social Media Services">
-      🚀 Jasa Social Media
+    <div class="badge" id="badge">
+      🚀 Social Media Services
     </div>
 
-    <h1>
-      <span data-id="Bantu akun Anda tumbuh dan terlihat"
-            data-en="Grow your account and look">
-        Bantu akun Anda tumbuh dan terlihat
-      </span>
-      <span data-id="lebih profesional."
-            data-en="more professional.">
-        lebih profesional.
-      </span>
+    <h1 id="heroTitle">
+      Grow your account and look
+      <span class="gradient">more professional.</span>
     </h1>
 
-    <p
-      data-id="Kami membantu kreator, toko online, dan bisnis meningkatkan kehadiran mereka di media sosial."
-      data-en="We help creators, online stores, and businesses grow their presence on social media.">
-      Kami membantu kreator, toko online, dan bisnis meningkatkan kehadiran mereka di media sosial.
+    <p id="heroText">
+      We help creators, online stores, and businesses grow their presence on social media.
     </p>
 
-    <a class="btn" href="#harga"
-      data-id="Mulai Sekarang"
-      data-en="Get Started">
-      Mulai Sekarang
+    <a class="btn" href="#harga" id="heroButton">
+      Get Started
     </a>
 
-    <a class="btn btn2" href="#layanan"
-      data-id="Lihat Layanan"
-      data-en="View Services">
-      Lihat Layanan
+    <a class="btn btn2" href="#layanan" id="heroButton2">
+      View Services
     </a>
 
   </div>
+
 </header>
 
 
 <!-- SERVICES -->
 <section id="layanan">
+
   <div class="wrap">
 
     <div class="title">
-      <h2
-        data-id="Layanan Kami"
-        data-en="Our Services">
-        Layanan Kami
-      </h2>
-
-      <p
-        data-id="Pilih layanan sesuai kebutuhan akun Anda."
-        data-en="Choose a service according to your account needs.">
+      <h2 id="servicesTitle">Layanan Kami</h2>
+      <p id="servicesText">
         Pilih layanan sesuai kebutuhan akun Anda.
       </p>
     </div>
@@ -345,144 +456,88 @@ footer{
 
       <div class="card">
         <div class="icon">📈</div>
-
-        <h3
-          data-id="Pertumbuhan Sosial Media"
-          data-en="Social Media Growth">
-          Pertumbuhan Sosial Media
-        </h3>
-
-        <p
-          data-id="Dukungan untuk membantu akun Instagram, TikTok, X, dan platform lainnya berkembang."
-          data-en="Support to help Instagram, TikTok, X, and other social media accounts grow.">
+        <h3 id="service1Title">Pertumbuhan Sosial Media</h3>
+        <p id="service1Text">
           Dukungan untuk membantu akun Instagram, TikTok, X, dan platform lainnya berkembang.
         </p>
       </div>
 
-
       <div class="card">
         <div class="icon">🎨</div>
-
-        <h3
-          data-id="Dukungan Konten"
-          data-en="Content Support">
-          Dukungan Konten
-        </h3>
-
-        <p
-          data-id="Bantuan ide konten, caption, dan perencanaan agar akun lebih aktif dan menarik."
-          data-en="Help with content ideas, captions, and planning to make your account more active and engaging.">
+        <h3 id="service2Title">Dukungan Konten</h3>
+        <p id="service2Text">
           Bantuan ide konten, caption, dan perencanaan agar akun lebih aktif dan menarik.
         </p>
       </div>
 
-
       <div class="card">
         <div class="icon">💬</div>
-
-        <h3
-          data-id="Dukungan Engagement"
-          data-en="Engagement Support">
-          Dukungan Engagement
-        </h3>
-
-        <p
-          data-id="Bantuan menjaga aktivitas dan interaksi akun secara konsisten."
-          data-en="Support to maintain consistent account activity and engagement.">
+        <h3 id="service3Title">Dukungan Engagement</h3>
+        <p id="service3Text">
           Bantuan menjaga aktivitas dan interaksi akun secara konsisten.
         </p>
       </div>
 
     </div>
+
   </div>
+
 </section>
 
 
-<!-- ORDER -->
+<!-- PRICING -->
 <section id="harga">
 
   <div class="wrap">
 
     <div class="title">
-
-      <h2
-        data-id="Buat Pesanan"
-        data-en="Place an Order">
-        Buat Pesanan
-      </h2>
-
-      <p
-        data-id="Pilih layanan dan masukkan jumlah yang Anda inginkan."
-        data-en="Select a service and enter the quantity you want.">
+      <h2 id="pricingTitle">Harga & Pemesanan</h2>
+      <p id="pricingText">
         Pilih layanan dan masukkan jumlah yang Anda inginkan.
       </p>
-
     </div>
 
+    <div class="price-box">
 
-    <div class="card" style="max-width:650px;margin:auto;">
-
-      <label>
-        <b
-          data-id="Pilih Layanan"
-          data-en="Select Service">
-          Pilih Layanan
-        </b>
+      <label for="pilihanLayanan" id="serviceLabel">
+        Pilih Layanan
       </label>
 
       <select id="pilihanLayanan" onchange="hitungHarga()">
 
-        <option value=""
-          data-id="-- Pilih layanan --"
-          data-en="-- Select service --">
+        <option value="">
           -- Pilih layanan --
         </option>
 
-        <option value="TikTok Followers"
-          data-harga="30000"
-          data-satuan="100">
+        <option value="TikTok Followers" data-harga="30000" data-satuan="100">
           TikTok Followers
         </option>
 
-        <option value="TikTok Likes"
-          data-harga="25000"
-          data-satuan="350">
+        <option value="TikTok Likes" data-harga="25000" data-satuan="350">
           TikTok Likes
         </option>
 
-        <option value="TikTok Views"
-          data-harga="12000"
-          data-satuan="1000">
+        <option value="TikTok Views" data-harga="12000" data-satuan="1000">
           TikTok Views
         </option>
 
-        <option value="Instagram Followers"
-          data-harga="22000"
-          data-satuan="100">
+        <option value="Instagram Followers" data-harga="22000" data-satuan="100">
           Instagram Followers
         </option>
 
-        <option value="Instagram Likes"
-          data-harga="22000"
-          data-satuan="350">
+        <option value="Instagram Likes" data-harga="22000" data-satuan="350">
           Instagram Likes
         </option>
 
-        <option value="Instagram Views"
-          data-harga="12000"
-          data-satuan="1000">
+        <option value="Instagram Views" data-harga="12000" data-satuan="1000">
           Instagram Views
         </option>
 
       </select>
 
 
-      <label>
-        <b
-          data-id="Jumlah"
-          data-en="Quantity">
-          Jumlah
-        </b>
+      <label for="jumlah" id="quantityLabel">
+        Jumlah
       </label>
 
       <input
@@ -491,44 +546,38 @@ footer{
         min="100"
         placeholder="Contoh: 1000"
         oninput="hitungHarga()"
-        onchange="hitungHarga()"
-        class="input"
       >
 
 
-      <label>
-        <b
-          data-id="Total Harga"
-          data-en="Total Price">
-          Total Harga
-        </b>
+      <label for="total" id="totalLabel">
+        Total Harga
       </label>
 
       <input
         type="text"
         id="total"
+        class="total"
         value="Rp0"
         readonly
-        class="input"
-        style="font-weight:bold;"
       >
 
+      <p class="small-note" id="priceNote">
+        Harga ditampilkan dalam Rupiah (IDR).
+      </p>
 
       <button
+        class="btn"
+        style="width:100%;margin:18px 0 0;"
         onclick="pesanWhatsApp()"
-        style="width:100%;padding:15px;border:0;border-radius:8px;background:#25D366;color:white;font-size:17px;font-weight:bold;">
-
-        📲
-        <span
-          data-id="Pesan via WhatsApp"
-          data-en="Order via WhatsApp">
-          Pesan via WhatsApp
-        </span>
-
+        id="orderButton"
+      >
+        📲 Pesan via WhatsApp
       </button>
 
     </div>
+
   </div>
+
 </section>
 
 
@@ -538,128 +587,102 @@ footer{
   <div class="wrap">
 
     <div class="title">
-
-      <h2
-        data-id="💳 Pembayaran"
-        data-en="💳 Payment">
-        💳 Pembayaran
-      </h2>
-
-      <p
-        data-id="Selesaikan pembayaran sesuai total pesanan Anda."
-        data-en="Complete your payment according to your order total.">
+      <h2 id="paymentTitle">💳 Pembayaran</h2>
+      <p id="paymentText">
         Selesaikan pembayaran sesuai total pesanan Anda.
       </p>
-
     </div>
-
 
     <div class="card payment-card">
 
-      <h3
-        data-id="Total Harga"
-        data-en="Total Price">
-        Total Harga
-      </h3>
+      <div class="payment-item">
 
-      <input
-        type="text"
-        id="totalPembayaran"
-        value="Rp0"
-        readonly
-        class="total-box"
-      >
+        <h3 id="paymentTotalTitle">
+          Total Harga
+        </h3>
 
-      <hr>
+        <input
+          type="text"
+          id="totalPembayaran"
+          value="Rp0"
+          readonly
+          class="total"
+        >
 
-
-      <h3
-        data-id="📱 Bayar dengan QRIS"
-        data-en="📱 Pay with QRIS">
-        📱 Bayar dengan QRIS
-      </h3>
-
-      <p
-        data-id="Scan QRIS menggunakan aplikasi pembayaran yang mendukung QRIS."
-        data-en="Scan the QRIS code using a payment app that supports QRIS.">
-        Scan QRIS menggunakan aplikasi pembayaran yang mendukung QRIS.
-      </p>
+      </div>
 
 
-      <img
-        src="qr_ID1025382947832_19.05.25_174759384_1747593843088.jpeg"
-        alt="QRIS Payment"
-        class="qris"
-      >
+      <div class="payment-item">
+
+        <h3 id="qrisTitle">
+          📱 QRIS
+        </h3>
+
+        <p id="qrisText">
+          Scan QRIS menggunakan aplikasi pembayaran yang mendukung QRIS.
+        </p>
+
+        <img
+          src="qr_ID1025382947832_19.05.25_174759384_1747593843088.jpeg"
+          alt="QRIS Pembayaran SocialBoost"
+          class="qris"
+        >
+
+      </div>
 
 
-      <hr>
+      <div class="payment-item">
+
+        <h3>
+          💙 DANA
+        </h3>
+
+        <div class="payment-number">
+          083847878700
+        </div>
+
+      </div>
 
 
-      <h3>💙 DANA</h3>
+      <div class="payment-item">
 
-      <p style="font-size:18px;">
-        <b>083847878700</b>
-      </p>
+        <h3>
+          🏦 SeaBank
+        </h3>
 
-
-      <hr>
-
-
-      <h3>🏦 SeaBank</h3>
-
-      <p>
-
-        <span
-          data-id="Nomor rekening:"
-          data-en="Account number:">
+        <p id="bankLabel">
           Nomor rekening:
-        </span>
+        </p>
 
-        <br>
-
-        <b style="font-size:18px;">
+        <div class="payment-number">
           901666615344
-        </b>
+        </div>
 
-      </p>
-
-
-      <hr>
+      </div>
 
 
-      <p
-        data-id="Setelah pembayaran selesai, kirim bukti pembayaran kepada kami."
-        data-en="After completing your payment, please send us your payment receipt.">
-        Setelah pembayaran selesai, kirim bukti pembayaran kepada kami.
-      </p>
+      <div style="padding-top:22px;">
 
+        <p id="afterPayment">
+          Setelah pembayaran selesai, kirim bukti pembayaran kepada kami.
+        </p>
 
-      <a
-        class="btn"
-        href="https://wa.me/62895410850100?text=Halo%20SocialBoost,%20saya%20sudah%20melakukan%20pembayaran."
-        target="_blank"
-        style="display:block;text-decoration:none;">
+        <a
+          class="btn"
+          href="https://wa.me/62895410850100?text=Halo%20SocialBoost,%20saya%20sudah%20melakukan%20pembayaran."
+          target="_blank"
+          style="display:block;margin:10px 0;"
+          id="paidButton"
+        >
+          ✅ Saya Sudah Bayar
+        </a>
 
-        ✅
-        <span
-          data-id="Saya Sudah Bayar"
-          data-en="I Have Paid">
-          Saya Sudah Bayar
-        </span>
-
-      </a>
-
-
-      <p
-        data-id="🌎 Pelanggan luar negeri dapat menghubungi kami melalui WhatsApp untuk pilihan pembayaran internasional."
-        data-en="🌎 International customers can contact us via WhatsApp for international payment options."
-        style="color:#aeb8cd;margin-top:20px;">
-        🌎 Pelanggan luar negeri dapat menghubungi kami melalui WhatsApp untuk pilihan pembayaran internasional.
-      </p>
+      </div>
 
     </div>
+
   </div>
+
 </section>
 
 
@@ -670,34 +693,21 @@ footer{
 
     <div>
 
-      <div class="title" style="text-align:left">
-
-        <h2
-          data-id="Tentang Kami"
-          data-en="About Us">
+      <div class="title" style="text-align:left;">
+        <h2 id="aboutTitle">
           Tentang Kami
         </h2>
-
       </div>
 
-
-      <p
-        data-id="SocialBoost adalah layanan sederhana untuk membantu kreator dan bisnis membangun kehadiran di media sosial."
-        data-en="SocialBoost is a simple service that helps creators and businesses build their social media presence.">
+      <p id="aboutText1">
         SocialBoost adalah layanan sederhana untuk membantu kreator dan bisnis membangun kehadiran di media sosial.
       </p>
 
-
-      <p
-        data-id="Kami menerima klien dari Indonesia maupun luar negeri. Hubungi kami untuk menjelaskan kebutuhan Anda."
-        data-en="We accept clients from Indonesia and overseas. Contact us to discuss your needs.">
+      <p id="aboutText2">
         Kami menerima klien dari Indonesia maupun luar negeri. Hubungi kami untuk menjelaskan kebutuhan Anda.
       </p>
 
-
-      <a class="btn" href="#kontak"
-        data-id="Hubungi Kami"
-        data-en="Contact Us">
+      <a class="btn" href="#kontak" id="aboutButton">
         Hubungi Kami
       </a>
 
@@ -706,81 +716,54 @@ footer{
 
     <div class="box">
 
-      <h3
-        data-id="Kenapa memilih kami?"
-        data-en="Why choose us?">
+      <h3 id="whyTitle">
         Kenapa memilih kami?
       </h3>
 
-      <p
-        data-id="✓ Harga terjangkau"
-        data-en="✓ Affordable prices">
-        ✓ Harga terjangkau
-      </p>
-
-      <p
-        data-id="✓ Komunikasi jelas"
-        data-en="✓ Clear communication">
-        ✓ Komunikasi jelas
-      </p>
-
-      <p
-        data-id="✓ Klien internasional diterima"
-        data-en="✓ International clients welcome">
-        ✓ Klien internasional diterima
-      </p>
-
-      <p
-        data-id="✓ Bisa mulai dari paket kecil"
-        data-en="✓ Start with a small package">
-        ✓ Bisa mulai dari paket kecil
-      </p>
+      <p id="why1">✓ Harga terjangkau</p>
+      <p id="why2">✓ Komunikasi jelas</p>
+      <p id="why3">✓ Klien internasional diterima</p>
+      <p id="why4">✓ Bisa mulai dari paket kecil</p>
 
     </div>
 
   </div>
+
 </section>
 
 
 <!-- CONTACT -->
 <section id="kontak">
 
-  <div class="wrap">
+  <div class="wrap contact">
 
     <div class="title">
 
-      <h2
-        data-id="Hubungi Kami"
-        data-en="Contact Us">
+      <h2 id="contactTitle">
         Hubungi Kami
       </h2>
 
-      <p
-        data-id="Hubungi kami untuk memesan atau bertanya tentang layanan."
-        data-en="Contact us to place an order or ask about our services.">
-        Hubungi kami untuk memesan atau bertanya tentang layanan.
+      <p id="contactText">
+        Hubungi kami untuk pertanyaan, pesanan, atau kebutuhan layanan.
       </p>
 
     </div>
 
+    <a
+      class="btn"
+      href="https://wa.me/62895410850100"
+      target="_blank"
+    >
+      💬 WhatsApp
+    </a>
 
-    <div style="text-align:center;margin-bottom:22px">
-
-      <a
-        class="btn"
-        href="https://wa.me/62895410850100"
-        target="_blank">
-        💬 WhatsApp
-      </a>
-
-      <a
-        class="btn btn2"
-        href="https://t.me/+62895410850100"
-        target="_blank">
-        ✈️ Telegram
-      </a>
-
-    </div>
+    <a
+      class="btn btn2"
+      href="https://t.me/+62895410850100"
+      target="_blank"
+    >
+      ✈️ Telegram
+    </a>
 
   </div>
 
@@ -790,13 +773,7 @@ footer{
 <!-- FOOTER -->
 <footer>
 
-  © 2026 SocialBoost —
-  <span
-    data-id="Jasa Social Media"
-    data-en="Social Media Services">
-    Jasa Social Media
-  </span>
-
+  © 2026 SocialBoost — Social Media Services
   <br>
 
   <small>
@@ -808,44 +785,15 @@ footer{
 
 <script>
 
-/* =========================
-   LANGUAGE
-========================= */
-
-function setLanguage(lang){
-
-  document.documentElement.lang = lang;
-
-  document.querySelectorAll("[data-id]").forEach(function(el){
-
-    if(lang === "en"){
-      el.textContent = el.getAttribute("data-en");
-    }else{
-      el.textContent = el.getAttribute("data-id");
-    }
-
-  });
+let bahasa = "id";
 
 
-  document.querySelectorAll(".lang-btn").forEach(function(btn){
-    btn.classList.remove("active");
-  });
+function formatRupiah(angka){
 
+  return "Rp" + Number(angka).toLocaleString("id-ID");
 
-  if(lang === "en"){
-    document.querySelectorAll(".lang-btn")[1].classList.add("active");
-  }else{
-    document.querySelectorAll(".lang-btn")[0].classList.add("active");
-  }
-
-
-  localStorage.setItem("language",lang);
 }
 
-
-/* =========================
-   PRICE CALCULATION
-========================= */
 
 function hitungHarga(){
 
@@ -858,6 +806,12 @@ function hitungHarga(){
   const pilihan =
     layanan.options[layanan.selectedIndex];
 
+  const totalInput =
+    document.getElementById("total");
+
+  const pembayaran =
+    document.getElementById("totalPembayaran");
+
 
   if(
     !pilihan ||
@@ -865,9 +819,8 @@ function hitungHarga(){
     jumlah <= 0
   ){
 
-    document.getElementById("total").value = "Rp0";
-
-    document.getElementById("totalPembayaran").value = "Rp0";
+    totalInput.value = "Rp0";
+    pembayaran.value = "Rp0";
 
     return;
   }
@@ -884,22 +837,16 @@ function hitungHarga(){
     Math.ceil(jumlah / satuan) * harga;
 
 
-  const formatted =
-    "Rp" + total.toLocaleString("id-ID");
+  const hasil =
+    formatRupiah(total);
 
 
-  document.getElementById("total").value =
-    formatted;
+  totalInput.value = hasil;
 
+  pembayaran.value = hasil;
 
-  document.getElementById("totalPembayaran").value =
-    formatted;
 }
 
-
-/* =========================
-   WHATSAPP ORDER
-========================= */
 
 function pesanWhatsApp(){
 
@@ -916,9 +863,9 @@ function pesanWhatsApp(){
   if(!layanan){
 
     alert(
-      document.documentElement.lang === "en"
-      ? "Please select a service."
-      : "Silakan pilih layanan."
+      bahasa === "id"
+      ? "Silakan pilih layanan terlebih dahulu."
+      : "Please select a service first."
     );
 
     return;
@@ -928,81 +875,329 @@ function pesanWhatsApp(){
   if(!jumlah || Number(jumlah) < 100){
 
     alert(
-      document.documentElement.lang === "en"
-      ? "Please enter a minimum quantity of 100."
-      : "Masukkan jumlah minimal 100."
+      bahasa === "id"
+      ? "Masukkan jumlah minimal 100."
+      : "Please enter a minimum quantity of 100."
     );
 
     return;
   }
 
 
-  const lang =
-    document.documentElement.lang;
-
-
-  let pesan;
-
-
-  if(lang === "en"){
-
-    pesan =
-      "Hello SocialBoost, I would like to place an order.%0A%0A" +
-      "Service: " +
-      encodeURIComponent(layanan) +
-      "%0A" +
-
-      "Quantity: " +
-      encodeURIComponent(jumlah) +
-      "%0A" +
-
-      "Total: " +
-      encodeURIComponent(total);
-
-  }else{
-
-    pesan =
-      "Halo SocialBoost, saya ingin membuat pesanan.%0A%0A" +
-      "Layanan: " +
-      encodeURIComponent(layanan) +
-      "%0A" +
-
-      "Jumlah: " +
-      encodeURIComponent(jumlah) +
-      "%0A" +
-
-      "Total: " +
-      encodeURIComponent(total);
-  }
+  const pesan =
+    "Halo SocialBoost,%0A%0A" +
+    "Saya ingin membuat pesanan.%0A%0A" +
+    "Layanan: " +
+    encodeURIComponent(layanan) +
+    "%0A" +
+    "Jumlah: " +
+    encodeURIComponent(jumlah) +
+    "%0A" +
+    "Total: " +
+    encodeURIComponent(total);
 
 
   window.open(
-    "https://wa.me/62895410850100?text=" + pesan,
+    "https://wa.me/62895410850100?text=" +
+    pesan,
     "_blank"
   );
+
 }
 
 
-/* =========================
-   LOAD SAVED LANGUAGE
-========================= */
+function ubahBahasa(){
 
-document.addEventListener("DOMContentLoaded",function(){
-
-  const savedLanguage =
-    localStorage.getItem("language");
+  bahasa = bahasa === "id" ? "en" : "id";
 
 
-  if(savedLanguage === "en"){
-    setLanguage("en");
-  }else{
-    setLanguage("id");
-  }
+  const texts = {
+
+    id:{
+
+      badge:"🚀 Jasa Social Media",
+
+      heroTitle:
+        'Bantu akun Anda berkembang dan terlihat <span class="gradient">lebih profesional.</span>',
+
+      heroText:
+        "Kami membantu kreator, toko online, dan bisnis mengembangkan kehadiran mereka di media sosial.",
+
+      heroButton:"Mulai Sekarang",
+
+      heroButton2:"Lihat Layanan",
+
+      servicesTitle:"Layanan Kami",
+
+      servicesText:
+        "Pilih layanan sesuai kebutuhan akun Anda.",
+
+      service1Title:"Pertumbuhan Sosial Media",
+
+      service1Text:
+        "Dukungan untuk membantu akun Instagram, TikTok, X, dan platform lainnya berkembang.",
+
+      service2Title:"Dukungan Konten",
+
+      service2Text:
+        "Bantuan ide konten, caption, dan perencanaan agar akun lebih aktif dan menarik.",
+
+      service3Title:"Dukungan Engagement",
+
+      service3Text:
+        "Bantuan menjaga aktivitas dan interaksi akun secara konsisten.",
+
+      pricingTitle:"Harga & Pemesanan",
+
+      pricingText:
+        "Pilih layanan dan masukkan jumlah yang Anda inginkan.",
+
+      serviceLabel:"Pilih Layanan",
+
+      quantityLabel:"Jumlah",
+
+      totalLabel:"Total Harga",
+
+      priceNote:
+        "Harga ditampilkan dalam Rupiah (IDR).",
+
+      orderButton:"📲 Pesan via WhatsApp",
+
+      paymentTitle:"💳 Pembayaran",
+
+      paymentText:
+        "Selesaikan pembayaran sesuai total pesanan Anda.",
+
+      paymentTotalTitle:"Total Harga",
+
+      qrisTitle:"📱 QRIS",
+
+      qrisText:
+        "Scan QRIS menggunakan aplikasi pembayaran yang mendukung QRIS.",
+
+      bankLabel:"Nomor rekening:",
+
+      afterPayment:
+        "Setelah pembayaran selesai, kirim bukti pembayaran kepada kami.",
+
+      paidButton:"✅ Saya Sudah Bayar",
+
+      aboutTitle:"Tentang Kami",
+
+      aboutText1:
+        "SocialBoost adalah layanan sederhana untuk membantu kreator dan bisnis membangun kehadiran di media sosial.",
+
+      aboutText2:
+        "Kami menerima klien dari Indonesia maupun luar negeri. Hubungi kami untuk menjelaskan kebutuhan Anda.",
+
+      aboutButton:"Hubungi Kami",
+
+      whyTitle:"Kenapa memilih kami?",
+
+      why1:"✓ Harga terjangkau",
+
+      why2:"✓ Komunikasi jelas",
+
+      why3:"✓ Klien internasional diterima",
+
+      why4:"✓ Bisa mulai dari paket kecil",
+
+      contactTitle:"Hubungi Kami",
+
+      contactText:
+        "Hubungi kami untuk pertanyaan, pesanan, atau kebutuhan layanan."
+
+    },
 
 
-  hitungHarga();
+    en:{
 
-});
+      badge:"🚀 Social Media Services",
+
+      heroTitle:
+        'Grow your account and look <span class="gradient">more professional.</span>',
+
+      heroText:
+        "We help creators, online stores, and businesses grow their presence on social media.",
+
+      heroButton:"Get Started",
+
+      heroButton2:"View Services",
+
+      servicesTitle:"Our Services",
+
+      servicesText:
+        "Choose a service according to your account needs.",
+
+      service1Title:"Social Media Growth",
+
+      service1Text:
+        "Support to help Instagram, TikTok, X and other social media accounts grow.",
+
+      service2Title:"Content Support",
+
+      service2Text:
+        "Content ideas, captions and planning support to make your account more active and attractive.",
+
+      service3Title:"Engagement Support",
+
+      service3Text:
+        "Support to maintain consistent activity and engagement on your social media account.",
+
+      pricingTitle:"Pricing & Ordering",
+
+      pricingText:
+        "Choose a service and enter the quantity you need.",
+
+      serviceLabel:"Choose Service",
+
+      quantityLabel:"Quantity",
+
+      totalLabel:"Total Price",
+
+      priceNote:
+        "Prices are displayed in Indonesian Rupiah (IDR).",
+
+      orderButton:"📲 Order via WhatsApp",
+
+      paymentTitle:"💳 Payment",
+
+      paymentText:
+        "Complete the payment according to your order total.",
+
+      paymentTotalTitle:"Total Price",
+
+      qrisTitle:"📱 QRIS",
+
+      qrisText:
+        "Scan the QRIS code using a payment application that supports QRIS.",
+
+      bankLabel:"Bank account number:",
+
+      afterPayment:
+        "After completing the payment, please send us your payment receipt.",
+
+      paidButton:"✅ I Have Paid",
+
+      aboutTitle:"About Us",
+
+      aboutText1:
+        "SocialBoost is a simple service that helps creators and businesses build their social media presence.",
+
+      aboutText2:
+        "We accept clients from Indonesia and other countries. Contact us to discuss your requirements.",
+
+      aboutButton:"Contact Us",
+
+      whyTitle:"Why choose us?",
+
+      why1:"✓ Affordable prices",
+
+      why2:"✓ Clear communication",
+
+      why3:"✓ International clients accepted",
+
+      why4:"✓ Small orders available",
+
+      contactTitle:"Contact Us",
+
+      contactText:
+        "Contact us for questions, orders, or service requirements."
+
+    }
+
+  };
+
+
+  const t = texts[bahasa];
+
+
+  document.getElementById("badge").innerHTML = t.badge;
+
+  document.getElementById("heroTitle").innerHTML = t.heroTitle;
+
+  document.getElementById("heroText").innerHTML = t.heroText;
+
+  document.getElementById("heroButton").innerHTML = t.heroButton;
+
+  document.getElementById("heroButton2").innerHTML = t.heroButton2;
+
+  document.getElementById("servicesTitle").innerHTML = t.servicesTitle;
+
+  document.getElementById("servicesText").innerHTML = t.servicesText;
+
+  document.getElementById("service1Title").innerHTML = t.service1Title;
+
+  document.getElementById("service1Text").innerHTML = t.service1Text;
+
+  document.getElementById("service2Title").innerHTML = t.service2Title;
+
+  document.getElementById("service2Text").innerHTML = t.service2Text;
+
+  document.getElementById("service3Title").innerHTML = t.service3Title;
+
+  document.getElementById("service3Text").innerHTML = t.service3Text;
+
+  document.getElementById("pricingTitle").innerHTML = t.pricingTitle;
+
+  document.getElementById("pricingText").innerHTML = t.pricingText;
+
+  document.getElementById("serviceLabel").innerHTML = t.serviceLabel;
+
+  document.getElementById("quantityLabel").innerHTML = t.quantityLabel;
+
+  document.getElementById("totalLabel").innerHTML = t.totalLabel;
+
+  document.getElementById("priceNote").innerHTML = t.priceNote;
+
+  document.getElementById("orderButton").innerHTML = t.orderButton;
+
+  document.getElementById("paymentTitle").innerHTML = t.paymentTitle;
+
+  document.getElementById("paymentText").innerHTML = t.paymentText;
+
+  document.getElementById("paymentTotalTitle").innerHTML = t.paymentTotalTitle;
+
+  document.getElementById("qrisTitle").innerHTML = t.qrisTitle;
+
+  document.getElementById("qrisText").innerHTML = t.qrisText;
+
+  document.getElementById("bankLabel").innerHTML = t.bankLabel;
+
+  document.getElementById("afterPayment").innerHTML = t.afterPayment;
+
+  document.getElementById("paidButton").innerHTML = t.paidButton;
+
+  document.getElementById("aboutTitle").innerHTML = t.aboutTitle;
+
+  document.getElementById("aboutText1").innerHTML = t.aboutText1;
+
+  document.getElementById("aboutText2").innerHTML = t.aboutText2;
+
+  document.getElementById("aboutButton").innerHTML = t.aboutButton;
+
+  document.getElementById("whyTitle").innerHTML = t.whyTitle;
+
+  document.getElementById("why1").innerHTML = t.why1;
+
+  document.getElementById("why2").innerHTML = t.why2;
+
+  document.getElementById("why3").innerHTML = t.why3;
+
+  document.getElementById("why4").innerHTML = t.why4;
+
+  document.getElementById("contactTitle").innerHTML = t.contactTitle;
+
+  document.getElementById("contactText").innerHTML = t.contactText;
+
+
+  document.querySelector(".lang").innerHTML =
+    bahasa === "id" ? "🇬🇧 EN" : "🇮🇩 ID";
+
+
+  document.documentElement.lang = bahasa;
+
+}
 
 </script>
 
