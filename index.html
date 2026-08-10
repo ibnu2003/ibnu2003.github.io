@@ -238,9 +238,11 @@ function calculate(){
  const price=Number(o.dataset.price);
  const unit=Number(o.dataset.unit);
  const total=Math.ceil(qty/unit)*price;
+ 
+ const serviceName=o.value;
 
- document.getElementById("unitPrice").textContent=
-   formatMoney(price)+" / "+unit.toLocaleString();
+document.getElementById("unitPrice").textContent=
+   formatMoney(price)+" / "+unit.toLocaleString()+" "+serviceName;
 
  document.getElementById("total").textContent=formatMoney(total);
  document.getElementById("paymentTotal").textContent=formatMoney(total);
