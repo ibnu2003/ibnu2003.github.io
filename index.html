@@ -248,54 +248,74 @@ function calculate(){
 
 function choosePackage(name){
  const p=packages[name];
+
  document.getElementById("service").value="";
  document.getElementById("qty").value=100;
- calculate();
- alert((currentLang==="id"?"Paket ":"Package ")+name+" "+(currentLang==="id"?"dipilih.":"selected."));
-}
 
+ calculate();
+
+ const message=currentLang==="id"
+   ? `Paket ${name} dipilih. Silakan pilih layanan dan jumlah yang kamu inginkan.`
+   : `${name} package selected. Please choose your service and quantity.`;
+
+ alert(message);
+
+ document.getElementById("order").scrollIntoView({
+   behavior:"smooth"
+ });
+}
 function orderWhatsApp(){
- const s=document.getElementById("service");
- const service=s.value||"Belum dipilih";
- const qty=document.getElementById("qty").value||"-";
- const name=document.getElementById("name").value||"-";
- const contact=document.getElementById("contact").value||"-";
+ const service=document.getElementById("service").value;
+ const qty=Number(document.getElementById("qty").value);
+ const name=document.getElementById("name").value.trim();
+ const contact=document.getElementById("contact").value.trim();
  const total=document.getElementById("total").textContent;
+
+ if(!service){
+   alert(currentLang==="id"
+     ?"⚠️ Silakan pilih layanan terlebih dahulu."
+     :"⚠️ Please select a service first.");
+   return;
+ }
+
+ if(!qty || qty<1){
+   alert(currentLang==="id"
+     ?"⚠️ Masukkan jumlah yang valid."
+     :"⚠️ Please enter a valid quantity.");
+   return;
+ }
+
+ if(!name){
+   alert(currentLang==="id"
+     ?"⚠️ Silakan masukkan nama."
+     :"⚠️ Please enter your name.");
+   return;
+ }
+
+ if(!contact){
+   alert(currentLang==="id"
+     ?"⚠️ Silakan masukkan email atau username."
+     :"⚠️ Please enter your email or username.");
+   return;
+ }
 
  const message=`Halo SocialBoost 👋
 
 Saya ingin membuat pesanan.
 
 Layanan: ${service}
-Jumlah: ${qty}
+Jumlah: ${qty.toLocaleString("id-ID")}
 Nama: ${name}
 Email/Username: ${contact}
 Mata uang: ${currentCurrency}
-Total: ${total}`;
-
- window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(message),"_blank");
-}
-
-function confirmPayment(){
- const service=document.getElementById("service").value||"Belum dipilih";
- const qty=document.getElementById("qty").value||"-";
- const name=document.getElementById("name").value||"-";
- const contact=document.getElementById("contact").value||"-";
- const total=document.getElementById("paymentTotal").textContent;
-
- const message=`Halo SocialBoost 👋
-
-Saya sudah melakukan pembayaran.
-
-Layanan: ${service}
-Jumlah: ${qty}
-Nama: ${name}
-Email/Username: ${contact}
 Total: ${total}
 
-Saya akan mengirimkan bukti pembayaran di chat ini.`;
+Mohon konfirmasi pesanan saya.`;
 
- window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(message),"_blank");
+ window.open(
+   "https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(message),
+   "_blank"
+ );
 }
 
 function copyPayment(text){
