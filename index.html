@@ -397,29 +397,178 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:#
 
 <div class="switch"><button class="currency-btn active" id="idrBtn" onclick="setCurrency('IDR')">🇮🇩 IDR</button><button class="currency-btn" id="usdBtn" onclick="setCurrency('USD')">🇺🇸 USD</button></div>
 
-<section id="order"><div class="wrap"><div class="title"><h2 data-t="orderTitle">Kalkulator & Pesanan</h2><p data-t="orderSub">Pilih layanan dan jumlah. Total dihitung otomatis.</p></div>
-<div class="order">
-<div class="card">
-<label data-t="serviceLabel">Layanan</label>
-<select id="service" class="select" onchange="calculate()"></select>
-<div class="service-price"><span data-t="unitPrice">Harga layanan:</span> <strong id="unitPrice">-</strong></div>
+<section id="order">
+<div class="wrap">
 
-<label data-t="qtyLabel">Jumlah</label>
-<input id="qty" class="input" type="number" min="1" value="100" oninput="calculate()" placeholder="Contoh: 1000">
-
-<label data-t="nameLabel">Nama</label>
-<input id="name" class="input" placeholder="Nama kamu">
-
-<label data-t="contactLabel">Email / Username</label>
-<input id="contact" class="input" placeholder="Email atau username">
-
-<div class="summary"><div data-t="totalLabel">Total Harga</div><div class="total" id="total">Rp0</div><div class="notice" data-t="calcNote">Harga dihitung otomatis berdasarkan jumlah.</div></div>
-<button class="btn" style="width:100%;margin:18px 0 0" onclick="orderWhatsApp()" data-t="waBtn">📲 Pesan via WhatsApp</button>
+<div class="title">
+<h2>Kalkulator & Pesanan</h2>
+<p>Pilih layanan, masukkan jumlah, lalu lihat total harga secara otomatis.</p>
 </div>
 
-<div class="card"><h3 data-t="whyTitle">Kenapa SocialBoost?</h3><p style="color:var(--muted)" data-t="whyText">Komunikasi jelas, harga transparan, dan mudah dipesan dari HP.</p>
-<ul><li data-t="why1">Harga transparan</li><li data-t="why2">Klien Indonesia & internasional</li><li data-t="why3">Order mudah dari HP</li><li data-t="why4">Konfirmasi melalui WhatsApp</li></ul></div>
-</div></div></section>
+<div class="order-pro">
+
+<div class="order-form">
+
+<div class="order-step">
+<div class="step-number">1</div>
+<div class="step-title">Pilih layanan</div>
+</div>
+
+<div class="field-group">
+<label>Layanan</label>
+
+<select id="service" class="select" onchange="calculate()">
+<option value="">-- Pilih layanan --</option>
+</select>
+
+<span class="field-help">
+Pilih layanan social media yang ingin kamu pesan.
+</span>
+</div>
+
+<div class="service-price">
+<span>Harga layanan:</span>
+<strong id="unitPrice">-</strong>
+</div>
+
+<div class="service-info">
+
+<div>
+<span>Minimal order</span>
+<strong id="minOrder">-</strong>
+</div>
+
+<div>
+<span>Harga / 1.000</span>
+<strong id="pricePer1000">-</strong>
+</div>
+
+<div>
+<span>Estimasi diterima</span>
+<strong id="estimatedQty">-</strong>
+</div>
+
+</div>
+
+<div class="order-step">
+<div class="step-number">2</div>
+<div class="step-title">Masukkan detail</div>
+</div>
+
+<div class="field-group">
+<label>Jumlah</label>
+
+<input
+id="qty"
+class="input"
+type="number"
+min="1"
+value="100"
+oninput="calculate()"
+placeholder="Contoh: 1000">
+
+<span class="field-help">
+Masukkan jumlah yang kamu inginkan.
+</span>
+</div>
+
+<div class="field-group">
+<label>Nama</label>
+
+<input
+id="name"
+class="input"
+placeholder="Nama kamu">
+</div>
+
+<div class="field-group">
+<label>Email / Username</label>
+
+<input
+id="contact"
+class="input"
+placeholder="Email atau username">
+</div>
+
+<div class="order-step">
+<div class="step-number">3</div>
+<div class="step-title">Ringkasan pesanan</div>
+</div>
+
+<div class="price-summary">
+
+<div class="price-summary-top">
+<span>Total yang harus dibayar</span>
+<span>💳</span>
+</div>
+
+<div class="total" id="total">Rp0</div>
+
+<div class="notice">
+Harga dihitung otomatis berdasarkan layanan dan jumlah.
+</div>
+
+</div>
+
+<button
+class="btn order-btn"
+onclick="orderWhatsApp()">
+
+📲 Pesan Sekarang via WhatsApp
+
+</button>
+
+</div>
+
+<div class="order-side">
+
+<h3>✨ Kenapa pesan di SocialBoost?</h3>
+
+<div class="trust-item">
+<div class="trust-icon">💰</div>
+<div>
+<strong>Harga transparan</strong>
+<span>Total harga terlihat sebelum melakukan pembayaran.</span>
+</div>
+</div>
+
+<div class="trust-item">
+<div class="trust-icon">⚡</div>
+<div>
+<strong>Proses mudah</strong>
+<span>Pesan langsung dari HP tanpa proses yang rumit.</span>
+</div>
+</div>
+
+<div class="trust-item">
+<div class="trust-icon">🌎</div>
+<div>
+<strong>Indonesia & Worldwide</strong>
+<span>Melayani pelanggan Indonesia dan internasional.</span>
+</div>
+</div>
+
+<div class="trust-item">
+<div class="trust-icon">📱</div>
+<div>
+<strong>Konfirmasi WhatsApp</strong>
+<span>Detail layanan, jumlah, dan total dikirim bersama pesan.</span>
+</div>
+</div>
+
+<div class="trust-item">
+<div class="trust-icon">🔒</div>
+<div>
+<strong>Pesanan jelas</strong>
+<span>Detail layanan, jumlah, dan total ditampilkan sebelum order.</span>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+</section>
 
 <section id="payment"><div class="wrap"><div class="title"><h2 data-t="paymentTitle">💳 Pembayaran Aman & Mudah</h2>
 <p data-t="paymentSub">Pilih metode pembayaran yang tersedia, lalu konfirmasi setelah pembayaran.</p></div>
