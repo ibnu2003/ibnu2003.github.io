@@ -270,12 +270,130 @@ footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:#
   </div>
 </section>
 
-<section id="pricing"><div class="wrap"><div class="title"><h2 data-t="pricingTitle">Paket Harga</h2><p data-t="pricingSub">Paket sederhana untuk kebutuhan berbeda.</p></div>
-<div class="pricing">
-<div class="card price-card"><h3>Basic</h3><div class="price" id="basicPrice">Rp49.000</div><ul><li>1 platform</li><li data-t="basic2">Paket awal</li><li data-t="basic3">Cocok untuk pemula</li></ul><a class="btn" href="#order" onclick="choosePackage('Basic')" data-t="choose">Pilih Paket</a></div>
-<div class="card price-card featured"><div class="ribbon" data-t="best">BEST VALUE</div><h3>Pro</h3><div class="price" id="proPrice">Rp99.000</div><ul><li>Hingga 2 platform</li><li data-t="pro2">Paket populer</li><li data-t="pro3">Prioritas komunikasi</li></ul><a class="btn" href="#order" onclick="choosePackage('Pro')" data-t="choose">Pilih Paket</a></div>
-<div class="card price-card"><h3>Premium</h3><div class="price" id="premiumPrice">Rp179.000</div><ul><li>Hingga 3 platform</li><li data-t="prem2">Paket lebih lengkap</li><li data-t="prem3">Dukungan prioritas</li></ul><a class="btn" href="#order" onclick="choosePackage('Premium')" data-t="choose">Pilih Paket</a></div>
-</div></div></section>
+<section id="pricing">
+  <div class="wrap">
+
+    <div class="title">
+      <h2 data-t="pricingTitle">Paket Harga</h2>
+      <p data-t="pricingSub">
+        Paket sederhana untuk kebutuhan berbeda.
+      </p>
+    </div>
+
+    <div class="pricing">
+
+      <!-- BASIC -->
+      <div class="card price-card">
+
+        <div class="icon">🌱</div>
+
+        <h3>Basic</h3>
+
+        <div class="price" id="basicPrice">
+          Rp49.000
+        </div>
+
+        <p style="color:var(--muted);margin:0 0 15px;">
+          Cocok untuk memulai.
+        </p>
+
+        <ul>
+          <li>1 platform</li>
+          <li data-t="basic2">Paket awal</li>
+          <li data-t="basic3">Cocok untuk pemula</li>
+        </ul>
+
+        <a
+          class="btn"
+          href="#order"
+          onclick="choosePackage('Basic')"
+          data-t="choose"
+          style="width:100%;text-align:center;margin-top:15px;"
+        >
+          Pilih Paket
+        </a>
+
+      </div>
+
+
+      <!-- PRO -->
+      <div
+        class="card price-card featured"
+        style="transform:translateY(-5px);"
+      >
+
+        <div class="ribbon" data-t="best">
+          BEST VALUE
+        </div>
+
+        <div class="icon">🚀</div>
+
+        <h3>Pro</h3>
+
+        <div class="price" id="proPrice">
+          Rp99.000
+        </div>
+
+        <p style="color:var(--muted);margin:0 0 15px;">
+          Pilihan populer untuk bisnis.
+        </p>
+
+        <ul>
+          <li>Hingga 2 platform</li>
+          <li data-t="pro2">Paket populer</li>
+          <li data-t="pro3">Prioritas komunikasi</li>
+        </ul>
+
+        <a
+          class="btn"
+          href="#order"
+          onclick="choosePackage('Pro')"
+          data-t="choose"
+          style="width:100%;text-align:center;margin-top:15px;"
+        >
+          Pilih Paket
+        </a>
+
+      </div>
+
+
+      <!-- PREMIUM -->
+      <div class="card price-card">
+
+        <div class="icon">💎</div>
+
+        <h3>Premium</h3>
+
+        <div class="price" id="premiumPrice">
+          Rp179.000
+        </div>
+
+        <p style="color:var(--muted);margin:0 0 15px;">
+          Untuk kebutuhan lebih lengkap.
+        </p>
+
+        <ul>
+          <li>Hingga 3 platform</li>
+          <li data-t="prem2">Paket lebih lengkap</li>
+          <li data-t="prem3">Dukungan prioritas</li>
+        </ul>
+
+        <a
+          class="btn"
+          href="#order"
+          onclick="choosePackage('Premium')"
+          data-t="choose"
+          style="width:100%;text-align:center;margin-top:15px;"
+        >
+          Pilih Paket
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
 
 <div class="switch"><button class="currency-btn active" id="idrBtn" onclick="setCurrency('IDR')">🇮🇩 IDR</button><button class="currency-btn" id="usdBtn" onclick="setCurrency('USD')">🇺🇸 USD</button></div>
 
