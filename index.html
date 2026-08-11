@@ -865,38 +865,39 @@ function calculate(){
 
   if(!o || !o.dataset.price || qty <= 0){
     document.getElementById("unitPrice").textContent = "-";
+    document.getElementById("minOrder").textContent = "-";
+    document.getElementById("pricePer1000").textContent = "-";
+    document.getElementById("estimatedQty").textContent = "-";
     document.getElementById("total").textContent =
       currentCurrency === "IDR" ? "Rp0" : "$0.00";
     document.getElementById("paymentTotal").textContent =
       currentCurrency === "IDR" ? "Rp0" : "$0.00";
-
-    document.getElementById("minOrder").textContent = "-";
-    document.getElementById("pricePer1000").textContent = "-";
-    document.getElementById("estimatedQty").textContent = "-";
     return;
   }
 
   const price = Number(o.dataset.price);
   const unit = Number(o.dataset.unit);
+
   const total = Math.ceil(qty / unit) * price;
+  const price1000 = Math.ceil(1000 / unit) * price;
 
   document.getElementById("unitPrice").textContent =
     formatMoney(price) + " / " + unit.toLocaleString() + " " + o.value;
+
+  document.getElementById("minOrder").textContent =
+    unit.toLocaleString();
+
+  document.getElementById("pricePer1000").textContent =
+    formatMoney(price1000);
+
+  document.getElementById("estimatedQty").textContent =
+    qty.toLocaleString();
 
   document.getElementById("total").textContent =
     formatMoney(total);
 
   document.getElementById("paymentTotal").textContent =
     formatMoney(total);
-
-  document.getElementById("minOrder").textContent =
-    unit.toLocaleString("id-ID");
-
-  document.getElementById("pricePer1000").textContent =
-    formatMoney(Math.ceil(1000 / unit) * price);
-
-  document.getElementById("estimatedQty").textContent =
-    qty.toLocaleString("id-ID");
 }
 
 function choosePackage(name){
