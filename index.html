@@ -761,9 +761,11 @@ onclick="orderWhatsApp()">
 
 <footer><div class="wrap">© 2026 SocialBoost — Social Media Services<br><small>Indonesia • Worldwide</small></div></footer>
 
-<script>
+ <script>
 const WHATSAPP="62895410850100";
+const TELEGRAM="USERNAME_TELEGRAM_KAMU";
 const USD_RATE=16000;
+
 let currentLang="id";
 let currentCurrency="IDR";
 
@@ -781,184 +783,196 @@ const services=[
   ["X/Twitter Likes",25000,100]
 ];
 
-const packages={Basic:49000,Pro:99000,Premium:179000};
-
-const T={
-id:{
-navServices:"Layanan",navPricing:"Harga",navOrder:"Pesan",navPayment:"Pembayaran",
-badge:"🚀 Social Media Services",heroTitle:'Buat akunmu terlihat <span>lebih profesional.</span>',
-heroText:"Layanan social media untuk kreator, toko online, dan bisnis di Indonesia maupun seluruh dunia.",
-heroBtn:"Mulai Pesan",heroBtn2:"Lihat Layanan",servicesTitle:"Layanan Kami",servicesSub:"Pilih layanan yang sesuai dengan kebutuhan akunmu.",
-tikTokDesc:"Followers, Likes, dan Views.",instagramDesc:"Followers, Likes, dan Views.",youtubeDesc:"Views dan Subscribers.",
-pricingTitle:"Paket Harga",pricingSub:"Paket sederhana untuk kebutuhan berbeda.",basic2:"Paket awal",basic3:"Cocok untuk pemula",pro2:"Paket populer",pro3:"Prioritas komunikasi",prem2:"Paket lebih lengkap",prem3:"Dukungan prioritas",
-choose:"Pilih Paket",best:"BEST VALUE",orderTitle:"Kalkulator & Pesanan",orderSub:"Pilih layanan dan jumlah. Total dihitung otomatis.",
-serviceLabel:"Layanan",unitPrice:"Harga layanan:",qtyLabel:"Jumlah",nameLabel:"Nama",contactLabel:"Email / Username",totalLabel:"Total Harga",
-calcNote:"Harga dihitung otomatis berdasarkan jumlah.",waBtn:"📲 Pesan via WhatsApp",whyTitle:"Kenapa SocialBoost?",whyText:"Komunikasi jelas, harga transparan, dan mudah dipesan dari HP.",
-why1:"Harga transparan",why2:"Klien Indonesia & internasional",why3:"Order mudah dari HP",why4:"Konfirmasi melalui WhatsApp",
-paymentTitle:"💳 Pembayaran",paymentSub:"Gunakan metode pembayaran yang tersedia.",payTotalTitle:"Total Pesanan",qrisText:"Scan QRIS untuk melakukan pembayaran.",
-danaLabel:"Nomor DANA:",bankLabel:"Nomor rekening:",copyDana:"📋 Salin Nomor DANA",copyBank:"📋 Salin No. Rekening",paidTitle:"✅ Sudah Membayar?",paidText:"Kirim bukti pembayaran melalui WhatsApp.",paidBtn:"📲 Konfirmasi Pembayaran",
-payNote:"Pastikan nama penerima dan nominal sudah benar sebelum membayar.",backOrder:"← Kembali ke Pesanan",faqTitle:"FAQ",faqSub:"Pertanyaan yang sering ditanyakan.",
-q1:"Bagaimana cara memesan?",a1:"Pilih layanan, masukkan jumlah dan kontak, lalu tekan WhatsApp.",q2:"Apakah menerima klien luar negeri?",a2:"Ya. Pilih English untuk tampilan bahasa Inggris.",q3:"Apakah harga bisa berubah?",a3:"Harga yang tampil adalah harga website saat order. Konfirmasi sebelum pembayaran."
-},
-en:{
-navServices:"Services",navPricing:"Pricing",navOrder:"Order",navPayment:"Payment",
-badge:"🚀 Social Media Services",heroTitle:'Make your account look <span>more professional.</span>',
-heroText:"Social media services for creators, online stores and businesses in Indonesia and worldwide.",
-heroBtn:"Get Started",heroBtn2:"View Services",servicesTitle:"Our Services",servicesSub:"Choose the service that fits your account.",
-tikTokDesc:"Followers, Likes and Views.",instagramDesc:"Followers, Likes and Views.",youtubeDesc:"Views and Subscribers.",
-pricingTitle:"Packages",pricingSub:"Simple packages for different needs.",basic2:"Starter package",basic3:"Great for beginners",pro2:"Popular package",pro3:"Priority communication",prem2:"More complete package",prem3:"Priority support",
-choose:"Choose Package",best:"BEST VALUE",orderTitle:"Calculator & Order",orderSub:"Choose a service and quantity. Total is calculated automatically.",
-serviceLabel:"Service",unitPrice:"Service price:",qtyLabel:"Quantity",nameLabel:"Name",contactLabel:"Email / Username",totalLabel:"Total Price",
-calcNote:"Price is calculated automatically from the quantity.",waBtn:"📲 Order via WhatsApp",whyTitle:"Why SocialBoost?",whyText:"Clear communication, transparent pricing and easy ordering from your phone.",
-why1:"Transparent pricing",why2:"Indonesia & international clients",why3:"Easy ordering from phone",why4:"Confirmation via WhatsApp",
-paymentTitle:"💳 Payment",paymentSub:"Use an available payment method.",payTotalTitle:"Order Total",qrisText:"Scan the QRIS to make your payment.",
-danaLabel:"DANA number:",bankLabel:"Account number:",copyDana:"📋 Copy DANA Number",copyBank:"📋 Copy Account Number",paidTitle:"✅ Already Paid?",paidText:"Send your payment proof through WhatsApp.",paidBtn:"📲 Confirm Payment",
-payNote:"Make sure the recipient name and amount are correct before paying.",backOrder:"← Back to Order",faqTitle:"FAQ",faqSub:"Frequently asked questions.",
-q1:"How do I order?",a1:"Choose a service, enter quantity and contact, then press WhatsApp.",q2:"Do you accept international clients?",a2:"Yes. Choose English for an easier experience.",q3:"Can prices change?",a3:"The displayed website price applies at order time. Confirm before payment."
-}};
+const packages={
+  Basic:49000,
+  Pro:99000,
+  Premium:179000
+};
 
 function formatMoney(idr){
- if(currentCurrency==="USD") return "$"+(idr/USD_RATE).toFixed(2);
- return "Rp"+Math.round(idr).toLocaleString("id-ID");
+  if(currentCurrency==="USD"){
+    return "$"+(idr/USD_RATE).toFixed(2);
+  }
+  return "Rp"+Math.round(idr).toLocaleString("id-ID");
 }
 
-function setCurrency(c){
- currentCurrency=c;
- document.getElementById("idrBtn").classList.toggle("active",c==="IDR");
- document.getElementById("usdBtn").classList.toggle("active",c==="USD");
- updatePackages();
- updateServices();
- calculate();
+function setCurrency(currency){
+  currentCurrency=currency;
+
+  const idrBtn=document.getElementById("idrBtn");
+  const usdBtn=document.getElementById("usdBtn");
+
+  if(idrBtn) idrBtn.classList.toggle("active",currency==="IDR");
+  if(usdBtn) usdBtn.classList.toggle("active",currency==="USD");
+
+  updatePackages();
+  updateServices();
+  calculate();
 }
 
 function updatePackages(){
- document.getElementById("basicPrice").textContent=formatMoney(packages.Basic);
- document.getElementById("proPrice").textContent=formatMoney(packages.Pro);
- document.getElementById("premiumPrice").textContent=formatMoney(packages.Premium);
+  const basic=document.getElementById("basicPrice");
+  const pro=document.getElementById("proPrice");
+  const premium=document.getElementById("premiumPrice");
+
+  if(basic) basic.textContent=formatMoney(packages.Basic);
+  if(pro) pro.textContent=formatMoney(packages.Pro);
+  if(premium) premium.textContent=formatMoney(packages.Premium);
 }
 
 function updateServices(){
- const s=document.getElementById("service");
- const old=s.value;
- s.innerHTML="";
- const first=document.createElement("option");
- first.value="";
- first.textContent=currentLang==="id"?"-- Pilih layanan --":"-- Select service --";
- s.appendChild(first);
+  const s=document.getElementById("service");
 
- services.forEach((item,i)=>{
-  const o=document.createElement("option");
-  o.value=item[0];
-  o.dataset.price=item[1];
-  o.dataset.unit=item[2];
-  o.textContent=item[0];
-  s.appendChild(o);
- });
- if([...s.options].some(o=>o.value===old))s.value=old;
- calculate();
+  if(!s) return;
+
+  const old=s.value;
+
+  s.innerHTML="";
+
+  const first=document.createElement("option");
+  first.value="";
+  first.textContent=
+    currentLang==="id"
+    ? "-- Pilih layanan --"
+    : "-- Select service --";
+
+  s.appendChild(first);
+
+  services.forEach(item=>{
+    const option=document.createElement("option");
+
+    option.value=item[0];
+    option.dataset.price=item[1];
+    option.dataset.unit=item[2];
+    option.textContent=item[0];
+
+    s.appendChild(option);
+  });
+
+  if([...s.options].some(option=>option.value===old)){
+    s.value=old;
+  }
+
+  calculate();
 }
 
 function calculate(){
-  const s = document.getElementById("service");
-  const qty = Number(document.getElementById("qty").value);
-  const o = s.options[s.selectedIndex];
+  const s=document.getElementById("service");
+  const qtyInput=document.getElementById("qty");
 
-  if(!o || !o.dataset.price || qty <= 0){
-    document.getElementById("unitPrice").textContent = "-";
-    document.getElementById("minOrder").textContent = "-";
-    document.getElementById("pricePer1000").textContent = "-";
-    document.getElementById("estimatedQty").textContent = "-";
-    document.getElementById("total").textContent =
-      currentCurrency === "IDR" ? "Rp0" : "$0.00";
-    document.getElementById("paymentTotal").textContent =
-      currentCurrency === "IDR" ? "Rp0" : "$0.00";
+  if(!s || !qtyInput) return;
+
+  const qty=Number(qtyInput.value);
+  const option=s.options[s.selectedIndex];
+
+  const unitPrice=document.getElementById("unitPrice");
+  const totalBox=document.getElementById("total");
+  const paymentTotal=document.getElementById("paymentTotal");
+
+  const minOrder=document.getElementById("minOrder");
+  const pricePer1000=document.getElementById("pricePer1000");
+  const estimatedQty=document.getElementById("estimatedQty");
+
+  if(
+    !option ||
+    !option.dataset.price ||
+    qty<=0
+  ){
+    if(unitPrice) unitPrice.textContent="-";
+    if(totalBox) totalBox.textContent=
+      currentCurrency==="IDR" ? "Rp0" : "$0.00";
+    if(paymentTotal) paymentTotal.textContent=
+      currentCurrency==="IDR" ? "Rp0" : "$0.00";
+
+    if(minOrder) minOrder.textContent="-";
+    if(pricePer1000) pricePer1000.textContent="-";
+    if(estimatedQty) estimatedQty.textContent="-";
+
     return;
   }
 
-  const price = Number(o.dataset.price);
-  const unit = Number(o.dataset.unit);
+  const price=Number(option.dataset.price);
+  const unit=Number(option.dataset.unit);
 
-  const total = Math.ceil(qty / unit) * price;
-  const price1000 = Math.ceil(1000 / unit) * price;
+  const total=Math.ceil(qty/unit)*price;
+  const price1000=Math.ceil(1000/unit)*price;
 
-  document.getElementById("unitPrice").textContent =
-    formatMoney(price) + " / " + unit.toLocaleString() + " " + o.value;
+  if(unitPrice){
+    unitPrice.textContent=
+      formatMoney(price)+" / "+
+      unit.toLocaleString("id-ID");
+  }
 
-  document.getElementById("minOrder").textContent =
-    unit.toLocaleString();
+  if(minOrder){
+    minOrder.textContent=
+      unit.toLocaleString("id-ID");
+  }
 
-  document.getElementById("pricePer1000").textContent =
-    formatMoney(price1000);
+  if(pricePer1000){
+    pricePer1000.textContent=
+      formatMoney(price1000);
+  }
 
-  document.getElementById("estimatedQty").textContent =
-    qty.toLocaleString();
+  if(estimatedQty){
+    estimatedQty.textContent=
+      qty.toLocaleString("id-ID");
+  }
 
-  document.getElementById("total").textContent =
-    formatMoney(total);
+  if(totalBox){
+    totalBox.textContent=formatMoney(total);
+  }
 
-  document.getElementById("paymentTotal").textContent =
-    formatMoney(total);
+  if(paymentTotal){
+    paymentTotal.textContent=formatMoney(total);
+  }
 }
 
 function choosePackage(name){
- const p=packages[name];
+  const price=packages[name];
 
- document.getElementById("service").value="";
- document.getElementById("qty").value=100;
+  const message=
+    currentLang==="id"
+    ? "Paket "+name+" dipilih. Harga "+formatMoney(price)+"."
+    : "Package "+name+" selected. Price "+formatMoney(price)+".";
 
- calculate();
+  alert(message);
 
- const message=currentLang==="id"
-   ? `Paket ${name} dipilih. Silakan pilih layanan dan jumlah yang kamu inginkan.`
-   : `${name} package selected. Please choose your service and quantity.`;
+  const order=document.getElementById("order");
 
- alert(message);
-
- document.getElementById("order").scrollIntoView({
-   behavior:"smooth"
- });
+  if(order){
+    order.scrollIntoView({
+      behavior:"smooth"
+    });
+  }
 }
+
 function orderWhatsApp(){
- const service=document.getElementById("service").value;
- const qty=Number(document.getElementById("qty").value);
- const name=document.getElementById("name").value.trim();
- const contact=document.getElementById("contact").value.trim();
- const total=document.getElementById("total").textContent;
+  const service=
+    document.getElementById("service")?.value ||
+    "Belum dipilih";
 
- if(!service){
-   alert(currentLang==="id"
-     ?"⚠️ Silakan pilih layanan terlebih dahulu."
-     :"⚠️ Please select a service first.");
-   return;
- }
+  const qty=
+    document.getElementById("qty")?.value ||
+    "-";
 
- if(!qty || qty<1){
-   alert(currentLang==="id"
-     ?"⚠️ Masukkan jumlah yang valid."
-     :"⚠️ Please enter a valid quantity.");
-   return;
- }
+  const name=
+    document.getElementById("name")?.value ||
+    "-";
 
- if(!name){
-   alert(currentLang==="id"
-     ?"⚠️ Silakan masukkan nama."
-     :"⚠️ Please enter your name.");
-   return;
- }
+  const contact=
+    document.getElementById("contact")?.value ||
+    "-";
 
- if(!contact){
-   alert(currentLang==="id"
-     ?"⚠️ Silakan masukkan email atau username."
-     :"⚠️ Please enter your email or username.");
-   return;
- }
+  const total=
+    document.getElementById("total")?.textContent ||
+    "Rp0";
 
- const message=`Halo SocialBoost 👋
+  const message=`Halo SocialBoost 👋
 
 Saya ingin membuat pesanan.
 
 Layanan: ${service}
-Jumlah: ${qty.toLocaleString("id-ID")}
+Jumlah: ${qty}
 Nama: ${name}
 Email/Username: ${contact}
 Mata uang: ${currentCurrency}
@@ -966,40 +980,347 @@ Total: ${total}
 
 Mohon konfirmasi pesanan saya.`;
 
- window.open(
-   "https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(message),
-   "_blank"
- );
+  window.open(
+    "https://wa.me/"+WHATSAPP+
+    "?text="+encodeURIComponent(message),
+    "_blank"
+  );
+}
+
+function confirmPayment(){
+  const service=
+    document.getElementById("service")?.value ||
+    "Belum dipilih";
+
+  const qty=
+    document.getElementById("qty")?.value ||
+    "-";
+
+  const name=
+    document.getElementById("name")?.value ||
+    "-";
+
+  const contact=
+    document.getElementById("contact")?.value ||
+    "-";
+
+  const total=
+    document.getElementById("paymentTotal")?.textContent ||
+    "Rp0";
+
+  const message=`Halo SocialBoost 👋
+
+Saya sudah melakukan pembayaran.
+
+Layanan: ${service}
+Jumlah: ${qty}
+Nama: ${name}
+Email/Username: ${contact}
+Total: ${total}
+
+Saya akan mengirimkan bukti pembayaran di chat ini.`;
+
+  window.open(
+    "https://wa.me/"+WHATSAPP+
+    "?text="+encodeURIComponent(message),
+    "_blank"
+  );
 }
 
 function copyPayment(text){
- navigator.clipboard.writeText(text).then(()=>{
-  alert(currentLang==="id"?"Berhasil disalin!":"Copied successfully!");
- }).catch(()=>{
-  alert(text);
- });
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(text)
+    .then(()=>{
+      alert(
+        currentLang==="id"
+        ? "Berhasil disalin!"
+        : "Copied successfully!"
+      );
+    })
+    .catch(()=>{
+      alert(text);
+    });
+  }else{
+    alert(text);
+  }
 }
 
+function openTelegram(){
+  const username=TELEGRAM.replace(/^@/,"");
+
+  if(
+    !username ||
+    username==="USERNAME_TELEGRAM_KAMU"
+  ){
+    alert(
+      currentLang==="id"
+      ? "Username Telegram belum diisi."
+      : "Telegram username has not been set."
+    );
+    return;
+  }
+
+  window.open(
+    "https://t.me/"+username,
+    "_blank"
+  );
+}
+
+const T={
+  id:{
+    navServices:"Layanan",
+    navPricing:"Harga",
+    navOrder:"Pesan",
+    navPayment:"Pembayaran",
+
+    badge:"🚀 Social Media Services",
+
+    heroTitle:'Buat akunmu terlihat <span>lebih profesional.</span>',
+
+    heroText:
+      "Layanan social media untuk kreator, toko online, dan bisnis di Indonesia maupun seluruh dunia.",
+
+    heroBtn:"Mulai Pesan",
+    heroBtn2:"Lihat Layanan",
+
+    servicesTitle:"Layanan Kami",
+    servicesSub:
+      "Pilih layanan yang sesuai dengan kebutuhan akunmu.",
+
+    tikTokDesc:"Followers, Likes, dan Views.",
+    instagramDesc:"Followers, Likes, dan Views.",
+    youtubeDesc:"Views dan Subscribers.",
+
+    pricingTitle:"Paket Harga",
+    pricingSub:
+      "Paket sederhana untuk kebutuhan berbeda.",
+
+    basic2:"Paket awal",
+    basic3:"Cocok untuk pemula",
+    pro2:"Paket populer",
+    pro3:"Prioritas komunikasi",
+    prem2:"Paket lebih lengkap",
+    prem3:"Dukungan prioritas",
+
+    choose:"Pilih Paket",
+    best:"BEST VALUE",
+
+    orderTitle:"Kalkulator & Pesanan",
+    orderSub:
+      "Pilih layanan dan jumlah. Total dihitung otomatis.",
+
+    serviceLabel:"Layanan",
+    unitPrice:"Harga layanan:",
+    qtyLabel:"Jumlah",
+    nameLabel:"Nama",
+    contactLabel:"Email / Username",
+    totalLabel:"Total Harga",
+
+    calcNote:
+      "Harga dihitung otomatis berdasarkan jumlah.",
+
+    waBtn:"📲 Pesan via WhatsApp",
+
+    whyTitle:"Kenapa SocialBoost?",
+    whyText:
+      "Komunikasi jelas, harga transparan, dan mudah dipesan dari HP.",
+
+    why1:"Harga transparan",
+    why2:"Klien Indonesia & internasional",
+    why3:"Order mudah dari HP",
+    why4:"Konfirmasi melalui WhatsApp",
+
+    paymentTitle:"💳 Pembayaran",
+    paymentSub:
+      "Gunakan metode pembayaran yang tersedia.",
+
+    payTotalTitle:"Total Pesanan",
+
+    qrisText:
+      "Scan QRIS untuk melakukan pembayaran.",
+
+    danaLabel:"Nomor DANA:",
+    bankLabel:"Nomor rekening:",
+
+    copyDana:"📋 Salin Nomor DANA",
+    copyBank:"📋 Salin No. Rekening",
+
+    paidTitle:"✅ Sudah Membayar?",
+    paidText:
+      "Kirim bukti pembayaran melalui WhatsApp.",
+
+    paidBtn:"📲 Konfirmasi Pembayaran",
+
+    payNote:
+      "Pastikan nama penerima dan nominal sudah benar sebelum membayar.",
+
+    backOrder:"← Kembali ke Pesanan",
+
+    faqTitle:"FAQ",
+    faqSub:"Pertanyaan yang sering ditanyakan.",
+
+    q1:"Bagaimana cara memesan?",
+    a1:
+      "Pilih layanan, masukkan jumlah dan kontak, lalu tekan WhatsApp.",
+
+    q2:"Apakah menerima klien luar negeri?",
+    a2:
+      "Ya. Pilih English untuk tampilan bahasa Inggris.",
+
+    q3:"Apakah harga bisa berubah?",
+    a3:
+      "Harga yang tampil adalah harga website saat order. Konfirmasi sebelum pembayaran."
+  },
+
+  en:{
+    navServices:"Services",
+    navPricing:"Pricing",
+    navOrder:"Order",
+    navPayment:"Payment",
+
+    badge:"🚀 Social Media Services",
+
+    heroTitle:
+      'Make your account look <span>more professional.</span>',
+
+    heroText:
+      "Social media services for creators, online stores and businesses in Indonesia and worldwide.",
+
+    heroBtn:"Get Started",
+    heroBtn2:"View Services",
+
+    servicesTitle:"Our Services",
+    servicesSub:
+      "Choose the service that fits your account.",
+
+    tikTokDesc:"Followers, Likes and Views.",
+    instagramDesc:"Followers, Likes and Views.",
+    youtubeDesc:"Views and Subscribers.",
+
+    pricingTitle:"Packages",
+    pricingSub:
+      "Simple packages for different needs.",
+
+    basic2:"Starter package",
+    basic3:"Great for beginners",
+    pro2:"Popular package",
+    pro3:"Priority communication",
+    prem2:"More complete package",
+    prem3:"Priority support",
+
+    choose:"Choose Package",
+    best:"BEST VALUE",
+
+    orderTitle:"Calculator & Order",
+    orderSub:
+      "Choose a service and quantity. Total is calculated automatically.",
+
+    serviceLabel:"Service",
+    unitPrice:"Service price:",
+    qtyLabel:"Quantity",
+    nameLabel:"Name",
+    contactLabel:"Email / Username",
+    totalLabel:"Total Price",
+
+    calcNote:
+      "Price is calculated automatically from the quantity.",
+
+    waBtn:"📲 Order via WhatsApp",
+
+    whyTitle:"Why SocialBoost?",
+    whyText:
+      "Clear communication, transparent pricing and easy ordering from your phone.",
+
+    why1:"Transparent pricing",
+    why2:"Indonesia & international clients",
+    why3:"Easy ordering from phone",
+    why4:"Confirmation via WhatsApp",
+
+    paymentTitle:"💳 Payment",
+    paymentSub:
+      "Use an available payment method.",
+
+    payTotalTitle:"Order Total",
+
+    qrisText:
+      "Scan the QRIS to make your payment.",
+
+    danaLabel:"DANA number:",
+    bankLabel:"Account number:",
+
+    copyDana:"📋 Copy DANA Number",
+    copyBank:"📋 Copy Account Number",
+
+    paidTitle:"✅ Already Paid?",
+    paidText:
+      "Send your payment proof through WhatsApp.",
+
+    paidBtn:"📲 Confirm Payment",
+
+    payNote:
+      "Make sure the recipient name and amount are correct before paying.",
+
+    backOrder:"← Back to Order",
+
+    faqTitle:"FAQ",
+    faqSub:"Frequently asked questions.",
+
+    q1:"How do I order?",
+    a1:
+      "Choose a service, enter quantity and contact, then press WhatsApp.",
+
+    q2:"Do you accept international clients?",
+    a2:
+      "Yes. Choose English for an easier experience.",
+
+    q3:"Can prices change?",
+    a3:
+      "The displayed website price applies at order time. Confirm before payment."
+  }
+};
+
 function setLanguage(lang){
- currentLang=lang;
- document.documentElement.lang=lang;
+  currentLang=lang;
 
- document.querySelectorAll("[data-t]").forEach(el=>{
-  const key=el.dataset.t;
-  if(T[lang][key]!==undefined)el.innerHTML=T[lang][key];
- });
+  document.documentElement.lang=lang;
 
- document.getElementById("name").placeholder=lang==="id"?"Nama kamu":"Your name";
- document.getElementById("contact").placeholder=lang==="id"?"Email atau username":"Email or username";
+  document.querySelectorAll("[data-t]")
+    .forEach(el=>{
+      const key=el.dataset.t;
 
- updateServices();
- updatePackages();
- calculate();
+      if(
+        T[lang] &&
+        T[lang][key]!==undefined
+      ){
+        el.innerHTML=T[lang][key];
+      }
+    });
+
+  const name=document.getElementById("name");
+  const contact=document.getElementById("contact");
+
+  if(name){
+    name.placeholder=
+      lang==="id"
+      ? "Nama kamu"
+      : "Your name";
+  }
+
+  if(contact){
+    contact.placeholder=
+      lang==="id"
+      ? "Email atau username"
+      : "Email or username";
+  }
+
+  updateServices();
+  updatePackages();
+  calculate();
 }
 
 setLanguage("id");
 setCurrency("IDR");
-</script>
+ </script>
 </body>
 </html>
 
